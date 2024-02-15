@@ -51,7 +51,7 @@ pipeline{
         // }
 
         stage('build'){
-            failFast throw
+            failFast true
             parallel{
                 stage('build frontend'){
             steps{
