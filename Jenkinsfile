@@ -115,13 +115,13 @@ pipeline{
 
     // ---------------------------------------Notions d'artefacte
 
-    stages[
+    stages{ 
         stage('build'){
             steps{
                 sh 'echo hello > world.txt'
                 archiveArtefacts(artifacts: '*.txt')
             }
         }
-    ]
+    }
 
 }
