@@ -44,34 +44,71 @@ pipeline{
     // //     }
     // // }
 
+
+
+    // Notions de stages parralle
+    // stages{
+
+    //     // options{
+    //     //     parallelAlwaysFailFast()
+    //     // }
+
+    //     stage('build'){
+    //         failFast true
+    //         parallel{
+    //             stage('build frontend'){
+    //         steps{
+    //             echo 'build frontend!'
+    //         }
+    //     }
+
+    //     stage('build backend'){
+    //         steps{
+    //             echo 'build backend !'
+    //         }
+    //     }
+    //         }
+    //     }
+    //     stage('deloyement production'){
+    //         steps{
+    //             echo 'deploy !'
+    //         }
+    //     }
+    // }
+
+
+
+    // Notions de matrice
     stages{
-
-        // options{
-        //     parallelAlwaysFailFast()
-        // }
-
-        stage('build'){
-            failFast true
-            parallel{
-                stage('build frontend'){
-            steps{
-                echo 'build frontend!'
+        stage('build and test'){
+            matrix{
+                axes{
+                    axis{
+                        name: 'PLATEFORM'
+                        Values: 'linux', 'macos', 'windows'
+                    }
+                    axis{
+                        name: 'BROWSER'
+                        Values: 'firefox', 'chrome', 'safari'
+                    }
+                }
+                stages{
+                    stage('build'){
+                        steps{
+                            echo "construire pour ${ PLATEFORM } - ${BROWSER}"
+                        }
+                    }
+                    stage('test'){
+                        steps{
+                            echo "test pour ${ PLATEFORM } - ${BROWSER}"
+                        }
+                    }
+                }
             }
         }
-
-        stage('build backend'){
+        stage('deployement production'){
             steps{
-                echo 'build backend !'
-            }
-        }
-            }
-        }
-
-        
-
-        stage('deloyement production'){
-            steps{
-                echo 'deoy !'
+                echo "====++++deloy !++++===="
             }
         }
     }
