@@ -1,7 +1,8 @@
 pipeline{
     agent {
-        docker 'node:12-alpine'
-
+        docker{
+            image 'node:21-alpine'
+        }
     }
 
     environment{
@@ -12,6 +13,7 @@ pipeline{
     stages{
         stage('build'){
             steps{
+                sh 'npm -v'
             //     echo "BRANCH_NAME : ${ env.BRANCH_NAME }"
             //     echo "BRANCH_IS_PRIMARY : ${ env.BRANCH_IS_PRIMARY }"
             //     echo "CI : ${ env.CI }"
@@ -21,8 +23,6 @@ pipeline{
             //     echo "MY_NUMBER : ${ env.MY_NUMBER }"
 
             //     sh 'printenv'
-
-            sh 'npm -v'
             }
             
         }
