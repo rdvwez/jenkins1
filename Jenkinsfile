@@ -4,20 +4,20 @@ pipeline{
     stages{
         stage('build'){
             steps{
-                ech'Build  application ...'
+                echo'Build  application ...'
             }
             
         }
 
         stage('tests'){
              steps{
-                ech'Executions des tests ...'
+                echo'Executions des tests ...'
             }
         }
     
         stage('deployement'){
             steps{
-                ech'Deployement application ...'
+                echo'Deployement application ...'
             }
         }
     }
