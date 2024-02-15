@@ -1,6 +1,11 @@
 pipeline{
     agent any
 
+    environment{
+        MY_NUMBER = 'une varobale'
+        MY_NUMBER = 123
+    }
+
     stages{
         stage('build'){
             steps{
@@ -9,6 +14,10 @@ pipeline{
                 echo "CI : ${ env.CI }"
                 echo "BUILD_NUMBER : ${ env.BUILD_NUMBer }"
                 echo "JENKINS_URL : ${ env.JENKINS_URL }"
+                echo "MY_NUMBER : ${ env.MY_NUMBER }"
+                echo "MY_NUMBER : ${ env.MY_NUMBER }"
+
+                sh 'printenv'
             }
             
         }
