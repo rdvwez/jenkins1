@@ -29,12 +29,12 @@ pipeline{
         }
     }
 
-    post{
-        always{
-            echo 'always .... '
-        }
-        success{
-            echo 'success .... '
-        }
-    }
+    // post{
+    //     always{
+    //         echo 'always .... '
+    //     }
+    //     success{
+    //         echo 'success .... '
+    //     }
+    // }
 }
