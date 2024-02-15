@@ -2,7 +2,7 @@ pipeline{
     agent any
 
     environment{
-        MY_NUMBER = 'une varobale'
+        MY_VAR = 'une varobale'
         MY_NUMBER = 123
     }
 
@@ -14,7 +14,7 @@ pipeline{
                 echo "CI : ${ env.CI }"
                 echo "BUILD_NUMBER : ${ env.BUILD_NUMBer }"
                 echo "JENKINS_URL : ${ env.JENKINS_URL }"
-                echo "MY_NUMBER : ${ env.MY_NUMBER }"
+                echo "MY_VAR : ${ env.MY_VAR }"
                 echo "MY_NUMBER : ${ env.MY_NUMBER }"
 
                 sh 'printenv'
