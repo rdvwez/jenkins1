@@ -84,12 +84,12 @@ pipeline{
             matrix{
                 axes{
                     axis{
-                        name: 'PLATEFORM'
-                        Values: 'linux', 'macos', 'windows'
+                        name 'PLATEFORM'
+                        Values 'linux', 'macos', 'windows'
                     }
                     axis{
-                        name: 'BROWSER'
-                        Values: 'firefox', 'chrome', 'safari'
+                        name 'BROWSER'
+                        Values 'firefox', 'chrome', 'safari'
                     }
                 }
                 stages{
