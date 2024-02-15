@@ -119,7 +119,7 @@ pipeline{
         stage('build'){
             steps{
                 sh 'echo hello > world.txt'
-                archiveArtefacts(artifacts: '*.txt')
+                archiveArtifacts(artifacts: '*.txt')
             }
         }
     }
