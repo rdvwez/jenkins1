@@ -46,7 +46,7 @@ pipeline{
 
 
 
-    // Notions de stages parralle
+    // ---------------------------------- Notions de stages parralle
     // stages{
 
     //     // options{
@@ -78,39 +78,50 @@ pipeline{
 
 
 
-    // Notions de matrice
-    stages{
-        stage('build and test'){
-            matrix{
-                axes{
-                    axis{
-                        name 'PLATEFORM'
-                        values 'linux', 'macos', 'windows'
-                    }
-                    axis{
-                        name 'BROWSER'
-                        values 'firefox', 'chrome', 'safari'
-                    }
-                }
-                stages{
-                    stage('build'){
-                        steps{
-                            echo "construire pour ${ PLATEFORM } - ${BROWSER}"
-                        }
-                    }
-                    stage('test'){
-                        steps{
-                            echo "test pour ${ PLATEFORM } - ${BROWSER}"
-                        }
-                    }
-                }
-            }
-        }
-        stage('deployement production'){
+    // ---------------------------------- Notions de matrice
+    // stages{
+    //     stage('build and test'){
+    //         matrix{
+    //             axes{
+    //                 axis{
+    //                     name 'PLATEFORM'
+    //                     values 'linux', 'macos', 'windows'
+    //                 }
+    //                 axis{
+    //                     name 'BROWSER'
+    //                     values 'firefox', 'chrome', 'safari'
+    //                 }
+    //             }
+    //             stages{
+    //                 stage('build'){
+    //                     steps{
+    //                         echo "construire pour ${ PLATEFORM } - ${BROWSER}"
+    //                     }
+    //                 }
+    //                 stage('test'){
+    //                     steps{
+    //                         echo "test pour ${ PLATEFORM } - ${BROWSER}"
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //     }
+    //     stage('deployement production'){
+    //         steps{
+    //             echo "====++++deloy !++++===="
+    //         }
+    //     }
+    // }
+
+    // ---------------------------------------Notions d'artefacte
+
+    stages[
+        stage('build'){
             steps{
-                echo "====++++deloy !++++===="
+                sh 'echo hello > world.txt'
+                archiveArtefacts(artifacts: '*.txt')
             }
         }
-    }
+    ]
 
 }
